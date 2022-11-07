@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Address;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/insert',function(){
+    $user =User::findOrFail (1);
+    $address=new Address(['name'=>'patan lalitpur']);
+    $user->address()->save($address);
 });
